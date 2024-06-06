@@ -67,7 +67,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                 children: [
                   SizedBox(
                     height: _controller.orderDetailModel.battleList.length *
-                        80 + 100, // Force a long content size
+                        80 + 100 + MediaQuery.of(context).padding.top, // Force a long content size
                     child: RepaintBoundary(
                       key: _repaintKey,
                       child: ListView.builder(
@@ -96,6 +96,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
       padding: const EdgeInsets.all(12.0),
       child: Column(
         children: [
+          SizedBox(height: MediaQuery.of(context).padding.top,),
           Row(
             children: [
               RichText(
