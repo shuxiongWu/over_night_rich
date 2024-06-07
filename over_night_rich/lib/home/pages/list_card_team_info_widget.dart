@@ -29,7 +29,7 @@ class _ListCardTeamInfoWidgetState extends State<ListCardTeamInfoWidget> {
             children: [
               Text("[${battleModel.hostTeamInfoModel.rank}]\n${battleModel.hostTeamInfoModel.rank_league}", style: const TextStyle(fontSize: 10, color: Colors.grey),textAlign: TextAlign.center,),
               const SizedBox(width: 4,),
-              Text(battleModel.hostTeamInfoModel.team_name),
+              Text(battleModel.hostTeamInfoModel.team_name.length <= 5 ? battleModel.hostTeamInfoModel.team_name : battleModel.hostTeamInfoModel.team_name.substring(0, 4)),
             ],
           )),
           const Padding(
@@ -38,7 +38,7 @@ class _ListCardTeamInfoWidgetState extends State<ListCardTeamInfoWidget> {
           ),
           Expanded(child: Row(
             children: [
-              Text(battleModel.guestTeamInfoModel.team_name),
+              Text(battleModel.guestTeamInfoModel.team_name.length <= 5 ? battleModel.guestTeamInfoModel.team_name : battleModel.guestTeamInfoModel.team_name.substring(0, 4)),
               const SizedBox(width: 4,),
               Text("[${battleModel.guestTeamInfoModel.rank}]\n${battleModel.guestTeamInfoModel.rank_league}", style: const TextStyle(fontSize: 10, color: Colors.grey),textAlign: TextAlign.center,),
             ],
@@ -55,14 +55,14 @@ class _ListCardTeamInfoWidgetState extends State<ListCardTeamInfoWidget> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 中心对齐所有子元素
         children: <Widget>[
           Expanded( // 使用Expanded包裹左侧文本
-            child: Text(battleModel.hostTeamInfoModel.team_name, textAlign: TextAlign.right, style: const TextStyle(fontSize: 14)),
+            child: Text(battleModel.hostTeamInfoModel.team_name.length <= 5 ? battleModel.hostTeamInfoModel.team_name : battleModel.hostTeamInfoModel.team_name.substring(0, 4), textAlign: TextAlign.right, style: const TextStyle(fontSize: 14)),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Text('${model.month}/${model.day} ${model.hour}:${model.minute}', style: TextStyle(fontSize: 12, color: ColorUtils.secondaryTextColor)),
           ),
           Expanded( // 使用Expanded包裹右侧文本
-            child: Text(battleModel.guestTeamInfoModel.team_name, textAlign: TextAlign.left, style: const TextStyle(fontSize: 14)),
+            child: Text(battleModel.guestTeamInfoModel.team_name.length <= 5 ? battleModel.guestTeamInfoModel.team_name : battleModel.guestTeamInfoModel.team_name.substring(0, 4), textAlign: TextAlign.left, style: const TextStyle(fontSize: 14)),
           ),
         ],
       ),

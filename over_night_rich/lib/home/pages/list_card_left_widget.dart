@@ -28,25 +28,27 @@ class _ListCardLeftWidgetState extends State<ListCardLeftWidget> {
       textColor = Colors.white;
     }
 
-    return Column(
-      children: [
-        Text(battleModel.serial_no, style: const TextStyle(fontSize: 10),),
-        const SizedBox(height: 2,),
-        Container(
-            width: 60,
-            height: 16,
-            color: Color(int.parse(color)),
-            child: Center(child: Text(battleModel.league_name, style: TextStyle(fontSize: 10, color: textColor)))
-        ),
-        timeWiget(isHasRank, battleModel),
-        const SizedBox(height: 2,),
-        GestureDetector(child: const Text("分析", style: TextStyle(fontSize: 10, color: Colors.lightBlueAccent),),
-        onTap: (){
-          String url = "https://koudai.17itou.com/460/match2/?abvertising_id=qEUdvOwkdhspRggvpHlmhNwNTijIjm&pageName=history&matchid=${battleModel.match_id}&lotteryId=${battleModel.lottery_no}&token=${NetConfig.token}";
-          // 点击事件
-          Get.toNamed(RichPages.webView, arguments: {"url": url});
-        },),
-      ],
+    return GestureDetector(
+      onTap: (){
+        String url = "https://koudai.17itou.com/460/match2/?abvertising_id=qEUdvOwkdhspRggvpHlmhNwNTijIjm&pageName=history&matchid=${battleModel.match_id}&lotteryId=${battleModel.lottery_no}&token=${NetConfig.token}";
+        // 点击事件
+        Get.toNamed(RichPages.webView, arguments: {"url": url});
+      },
+      child: Column(
+        children: [
+          Text(battleModel.serial_no, style: const TextStyle(fontSize: 10),),
+          const SizedBox(height: 2,),
+          Container(
+              width: 60,
+              height: 16,
+              color: Color(int.parse(color)),
+              child: Center(child: Text(battleModel.league_name, style: TextStyle(fontSize: 10, color: textColor)))
+          ),
+          timeWiget(isHasRank, battleModel),
+          const SizedBox(height: 2,),
+          const Text("分析", style: TextStyle(fontSize: 10, color: Colors.lightBlueAccent),),
+        ],
+      ),
     );
   }
 

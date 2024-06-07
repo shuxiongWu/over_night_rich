@@ -43,7 +43,7 @@ class TimeUntils {
         '周五', // Friday
         '周六'  // Saturday
       ];
-      return weekdays[date.weekday];
+      return weekdays[date.weekday - 1];
     }
   }
 
